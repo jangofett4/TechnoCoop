@@ -36,16 +36,20 @@ namespace TechnoCoop
         public int Light { get; set; }
 
         [FirestoreProperty]
+        [JsonPropertyName("M")]
+        public int MQ4 { get; set; }
+
+        [FirestoreProperty]
         [JsonPropertyName("W")]
         public int Water { get; set; }
 
         [FirestoreProperty]
         [JsonPropertyName("LC1")]
-        public int LoadCell1 { get; set; }
+        public float LoadCell1 { get; set; }
 
         [FirestoreProperty]
         [JsonPropertyName("LC2")]
-        public int LoadCell2 { get; set; }
+        public float LoadCell2 { get; set; }
     }
 
 
@@ -54,7 +58,7 @@ namespace TechnoCoop
     {
         [FirestoreProperty]
         [JsonPropertyName("Weight")]
-        public int Weight { get; set; }
+        public float Weight { get; set; }
 
         [FirestoreProperty]
         [JsonPropertyName("OnNest")]

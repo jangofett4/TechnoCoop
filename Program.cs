@@ -74,10 +74,10 @@ namespace TechnoCoop
 
         public static async void AsyncEntry()
         {
-            {
-                var today = 7 /* DateTime.Now.Day */;
+            /*{
+                var today = 7 ;
                 var col = Client.Collection("ChickenStatus");
-                for (int i = today; i > today - 7; i--)
+                for (int i = today; i > today - 4; i--)
                 {
                     var snap = await col.WhereEqualTo("Day", i).OrderBy("Creation").GetSnapshotAsync();
                     if (snap.Documents.Count == 0) // no data left
@@ -87,6 +87,17 @@ namespace TechnoCoop
                         var status = d.ConvertTo<ChickenStatus>();
                         Console.WriteLine($"{ status.Day }, { status.Weight }, { status.OnNest }");
                     }
+                }
+            }*/
+            
+            {
+                var today = DateTime.Now.Day;
+                var col = Client.Collection("ChickenStatus");
+                var snap = await col.OrderBy("Day").OrderBy("Creation").GetSnapshotAsync();
+                foreach (var d in snap.Documents)
+                {
+                    var status = d.ConvertTo<ChickenStatus>();
+                    Console.WriteLine($"{ status.Day }, { status.Weight }, { status.OnNest }");
                 }
             }
             /*
